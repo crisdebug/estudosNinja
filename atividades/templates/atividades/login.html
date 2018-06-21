@@ -1,0 +1,62 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <title>Login Testes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/css.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap-4.1.1-dist/css/bootstrap.css' %}">
+    </head>
+
+    <body style="width: 100%;" style="background-image: url('/imagens/bg-011.jpg'); ">
+        <div class="bg-contact2">
+            <div class="container-contact2">
+                <header>
+                    <h1 style="color: white;">O Estudos.Ninja é uma plataforma web pensada para você se organizar nos seus estudos.</h1>
+                </header>
+
+                <main >
+                    <div class="jumbotron jumbotron" id="container">
+                        <section class="cabeçalho">
+                            <h1 id="login">Login</h1>
+                            <hr class="my-6">
+                        </section>
+
+                        <form class="formulario" action="{% url 'logar' %}" method="POST">{% csrf_token %}
+                            <div class="primeiros">
+                                <div class="inp" id="esp">
+                                
+                                    <label class="inp_inp" id="inp" for="email">Email</label>
+                                    <br>
+                                    {{ form.email }}
+                                </div>
+                                <div class="inp">
+                                    <label class="inp_inp" for="senha">Senha</label>
+                                    <br>
+                                    {{ form.password }}
+                                </div>
+                            </div>
+
+                            <div class="inp2"> 
+                                <input type="checkbox" id="logado" name="logado" value="sim" checked>
+                                <label id = "logado" for="logado">Manter-me logado</label>
+                                <input class="inp1-" type="submit" name="enviar" value="Entrar">
+                            </div>
+
+                            <div class="inp3">
+                                <p>Esqueceu sua senha? clique <a href="recuperar.html" target="">aqui</a> para recuperá-la.</p>
+                                <p>Não tem conta no Estudos.Ninja? <a href="cadastro.html" target="">Cadastre-se</a> agora mesmo e se torne um ninja nos estudos.</p>
+                            </div>
+                        </form>
+                    </div>    
+                </main>
+            </div>
+        </div>
+
+        <footer>
+            <div class="jumbotron jumbotron" style="background: rgba(41,44,51,0.6);">Estudos.Ninja &copy; Copyright 2018. Todos os direitos reservados à Estudos.Ninja Corporation</div>
+        </footer>
+
+    </body>
+</html>

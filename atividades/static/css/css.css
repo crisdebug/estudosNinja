@@ -1,0 +1,295 @@
+ body{
+    position:static;
+    font-family: "Arial", "Helvetica", sans-serif;
+    margin: auto;
+    padding: 20%;
+    size: 18px;
+    padding-top: 3%;
+    top: 0;
+    left: -100%;
+    background: #555555 url("/static/imagens/bg-011.jpg") no-repeat;
+    /*  background: rgba(93,84,240,0.5);
+    background: -webkit-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5));
+    background: -o-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5));
+    background: -moz-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5));
+    background: linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5));
+    pointer-events: none;*/
+}
+/*.bg-container-contact100{
+    width: 100%;
+    height: 100% ;
+    background-size: cover;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+.bg-container-contact100::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -11;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(41,44,51,0.6);
+  pointer-events: none;
+}*/
+main{
+    width: inherit;
+    float: center;
+    display: block;
+    margin-bottom: 10%;
+}
+.container{
+    width: 80%;
+    padding: 10px;
+    float: center;
+    clear: both;
+    display: block;
+    background: white;
+    font-family: cursive;
+    border-radius: 10px;
+    margin-top: 10%;
+    margin-left: 5%;
+   
+  /*box-shadow: 0 10px 30px 0px rgba(132, 106, 221, 0.5);
+  -moz-box-shadow: 0 10px 30px 0px rgba(132, 106, 221, 0.5);
+  -webkit-box-shadow: 0 10px 30px 0px rgba(132, 106, 221, 0.5);
+  -o-box-shadow: 0 10px 30px 0px rgba(132, 106, 221, 0.5);
+  -ms-box-shadow: 0 10px 30px 0px rgba(132, 106, 221, 0.5);*/
+
+  /*background: rgba(219,21,99,0.8);
+  background: -webkit-linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
+  background: -o-linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
+  background: -moz-linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
+  background: linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));*/  
+}
+.cabeçalho, h1, h3, h4, p{
+    vertical-align: top;
+    text-align: center;
+    font-family: cursive;
+}
+.formulario{
+    float: center;
+}
+.primeiros{
+    max-width: 100%;
+}
+.inp{
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 55%;
+    margin-left: 20%;
+}
+.inp_inp{
+    margin-left: -5px;
+    margin-right: 5px;
+}
+#esp{
+    margin-bottom: 20px;
+}
+input{
+    padding-left: 0;
+    padding-bottom: 10px;
+    padding-right: 7px;
+    padding-top: 7px;
+    margin-left: 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    max-width: 100%;
+    background: transparent;
+    border: ridge 1px;
+    border-right-style: hidden;
+    border-top-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: ridge;
+}
+#inp{
+    padding-right: 8px;
+}
+.inp1{
+    padding: 10px; 
+}
+.inp1-{
+    position: relative;
+    bottom: 0;
+    padding: 5px 15px; 
+    margin-left: 7%;
+    background: rgb(83, 83, 83);
+    color: #fff;
+    border: ridge 1px;
+    border-right-style: hidden;
+    border-top-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: ridge;
+    font-family: cursive;
+}
+.inp1-:hover{
+    background: rgba(128, 8, 172, 0.5);
+    color: black;
+    transition: top 2s, color 3s ease;
+    bottom: 3px
+}
+.inp1-:hover{
+    color: black;
+    transition: top 2s ease;
+    bottom: 3px;
+}
+.inp2{
+    text-align: center;
+    margin-bottom: 5%;
+    padding-left: 2%;
+}
+.inp3{
+    text-align: center;
+}
+a{
+    position: relative;
+    bottom: 0px
+}
+a:hover{
+    color: red;
+    transition: top 2s, color 1s ease;
+    bottom: 3px;
+}
+#login, #cadastro{
+    text-decoration-line: underline;
+}
+#logado{
+    margin-right: 0px;
+}
+/*Página de cadrasto */
+
+.header_cadastro{
+    margin-bottom: 10%;
+}
+.cadastro{
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    float: center;
+    clear: both;
+    display: block;
+    background: white;
+    font-family: cursive;
+    margin-bottom: 15%;
+    margin-left: 0%; 
+}
+.email_cadastro{
+    margin-left: 10px;
+    float: center;
+    margin-bottom: 20px;
+    clear: both;
+}
+#nome_cadastro{
+    width: 50%;
+    float: left;
+    margin-bottom: 20px;
+}
+#sobrenome_cadastro{
+    width: 50%;
+    float: right;
+    margin-bottom: 20px;
+    margin-left: -80px;
+}
+#email_cadastro{
+    width: 50%;
+    float: left;
+    margin-bottom: 20px;
+    margin-left: -8px;
+}
+#senha_cadastro{
+   width: 50%;
+   float: right;
+   margin-bottom: 20px;
+   margin-left: 0px;
+}
+#senha_cadastro1{
+    margin-left: 30px;
+}
+#senha1{
+    margin-right: 0px;
+    max-width: 100%;
+}
+.input{
+    margin-left: 10px;
+}
+#botoes{
+    width: inherit;
+}
+.botao_cadastro{
+    width: 50%;
+    float: left;
+}
+#botao_cadastro1{
+    margin-left: 12%;
+}
+.confirmar_cadastro{
+    width: 50%;
+    float: right;
+}
+.confirmar_cadastro1{
+    margin-left: 10px;
+}
+/*Página de Turmas*/
+
+.body_turmas{
+    padding: 0;
+    margin: auto;
+    width: 100%;  
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+#container_turmas{
+   margin-top: 0;
+}
+.criar_turma{
+  
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.criar_turma1{
+  
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+#nome_turma{
+    display: inline-block;
+    max-width: 50%;
+    margin-left: 15%;
+    vertical-align: top;
+}
+#input_turma{
+    float: right;
+    max-width: 50%;
+    margin-right: 15%;
+    vertical-align: top;
+}
+.nome_turma{
+    max-width: 100%;
+    float: center;
+    vertical-align: top;
+    margin-bottom: 20%;
+}
+.input_turma{
+    max-width: 100%;
+    float: left;
+    vertical-align: top;
+    margin-left: -10%;
+    margin-bottom: 25%;
+    clear: both;
+}
+#enviar_turma{
+    float: right;
+    margin-right: 30%;
+    clear: both;
+}
+
+footer{
+    text-align: center;
+}
