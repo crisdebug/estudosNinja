@@ -20,6 +20,6 @@ from atividades import views, forms
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',LoginView.as_view(template_name='atividades/login.html', authentication_form=forms.LoginAlunoForm) , name='login'),
-    path('logar/', views.logar, name='logar')
+    path('',LoginView.as_view(template_name='atividades/login.html') , name='login'),
+    path('logar/', views.logar, name='logar'),
 ]
