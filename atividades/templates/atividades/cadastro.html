@@ -3,13 +3,13 @@
 <html lang="pt-BR">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/testes.css">
+        <link rel="stylesheet" href="{% static 'css/testes.css' %}">
         <title>Cadastro</title>
         <link rel="stylesheet" href="{% static 'bootstrap-4.1.1-dist/css/bootstrap.css' %}">
         
     </head>
     <body>
-        <div class="bg-contact2" style="background-image: url('imagens/bg-01.jpg');">
+        <div class="bg-contact2" style="background-image: url('/static/imagens/bg-01.jpg');">
             <div class="container-contact2">
                 <header class="header_cadastro">
                     <h1 style="color: white;">Agora é só preencher os campos para se cadastrar!</h1>
@@ -20,18 +20,18 @@
                         <div><h1 class="cadastro">Cadastre-se</h1></div>
                         <hr class="my-4">
 
-                        <form action="/cadastrar" method="POST">{% csrf_token %}
+                        <form method="POST">{% csrf_token %}
                             <div class="nome_cadastro">               
                                 <div id="nome_cadastro"><label for="nome">Nome </label>
-                                {{ Form.first_name }}
+                                {{ form.first_name }}</div>
                                 <div id="sobrenome_cadastro"><label id="sobrenome1" for="sobrenome">Sobrenome</label>
-                                <input class="input" id="sobrenome" type="text" placeholder="Sobrenome" size="30" required></div>
-                            </div>
+                                {{ form.last_name }}</div>
+                            </sdiv>
                             <div class="email_cadastro" >
                                 <div id="email_cadastro"><label for="email" >Email</label>
-                                <input class="input" id="email" type="email" placeholder="exemplo@exemplo.com" size="30" required></div>
+                                {{ form.email }}</div>
                                 <div id="senha_cadastro"><label id="senha_cadastro1" for="senha1" >Senha</label>
-                                <input class="input" id="password" type="password" placeholder="Senha" size="30" required name="senha1"></div>
+                                {{ form.password1 }}</div>
                                 
                             </div>
                             
@@ -41,7 +41,7 @@
                                 <input class="inp1-" id="botao_cadastro1" type="submit" name="enviar" value="Cadastrar">
                             </div>
                                 <label class="confirmar_cadastro1" for="confirma">Confirmar Senha</label>
-                                <input class="input" id="confirm_password" type="password" placeholder="Confirmar Senha" size="30" required name="confirma" onclick="validarSenha()">
+                                {{ form.password2 }}
                             </div>
                         </form>
                     </div>
@@ -53,22 +53,6 @@
         <footer>
             <div class="jumbotron jumbotron " style="background: rgba(41,44,51,0.6);">Estudos.Ninja &copy; Copyright 2018. Todos os direitos reservados à Estudos.Ninja Corporation</div>
         </footer>
-        <script>alert("Olá, seja bem-vindo à tela de cadastro!");</script>
-        <script>
-            var password = document.getElementById("password")
-                , confirm_password = document.getElementById("confirm_password");
 
-            function validatePassword(){
-            if(password.value != confirm_password.value) {
-                confirm_password.setCustomValidity("Senhas diferentes!");
-            } else {
-                
-                confirm_password.setCustomValidity('');
-            }
-            }
-
-            password.onchange = validatePassword;
-            confirm_password.onkeyup = validatePassword;
-        </script>
     </body>
 </html> 

@@ -23,13 +23,13 @@
                             <hr class="my-6">
                         </section>
 
-                        <form class="formulario" action="{% url 'logar' %}" method="POST">{% csrf_token %}
+                        <form class="formulario" method="POST">{% csrf_token %}
                             <div class="primeiros">
                                 <div class="inp" id="esp">
                                 
                                     <label class="inp_inp" id="inp" for="email">Email</label>
                                     <br>
-                                    {{ form.email }}
+                                    {{ form.username }}
                                 </div>
                                 <div class="inp">
                                     <label class="inp_inp" for="senha">Senha</label>
@@ -46,7 +46,7 @@
 
                             <div class="inp3">
                                 <p>Esqueceu sua senha? clique <a href="recuperar.html" target="">aqui</a> para recuperá-la.</p>
-                                <p>Não tem conta no Estudos.Ninja? <a href="cadastro.html" target="">Cadastre-se</a> agora mesmo e se torne um ninja nos estudos.</p>
+                                <p>Não tem conta no Estudos.Ninja? <a href="{% url 'cadastro' %}" target="">Cadastre-se</a> agora mesmo e se torne um ninja nos estudos.</p>
                             </div>
                         </form>
                     </div>    

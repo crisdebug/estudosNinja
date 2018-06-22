@@ -123,3 +123,8 @@ STATIC_URL = '/static/'
 
 
 LOGIN_REDIRECT_URL = '/logou'
+
+AUTHENTICATION_BACKENDS = [
+    'project.backends.UserModelEmailBackend',    # Login w/ email
+    'django.contrib.auth.backends.ModelBackend',    # Login w/ username
+]

@@ -21,5 +21,5 @@ from atividades import views, forms
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',LoginView.as_view(template_name='atividades/login.html') , name='login'),
-    path('logar/', views.logar, name='logar'),
+    path('cadastro/', views.signup, name='cadastro'),
 ]
