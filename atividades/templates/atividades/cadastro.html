@@ -14,13 +14,28 @@
                 <header class="header_cadastro">
                     <h1 style="color: white;">Agora é só preencher os campos para se cadastrar!</h1>
                 </header>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4>
+                                <i class="fa fa-warning"></i>
+                                Aviso:
+                            </h4>
+                                <p>{{ message }}</p>
 
+                        </div>
+                        {% endfor %}
+                        {% endif %}
                 <main>
                     <div id="cadastro">
                         <div><h1 class="cadastro">Cadastre-se</h1></div>
                         <hr class="my-4">
-
-                        <form method="POST">{% csrf_token %}
+                        
+                        <form method="POST" action="/cadastro/">
+                            {% csrf_token %}
                             <div class="nome_cadastro">               
                                 <div id="nome_cadastro"><label for="nome">Nome </label>
                                 {{ form.first_name }}</div>
@@ -29,7 +44,7 @@
                             </sdiv>
                             <div class="email_cadastro" >
                                 <div id="email_cadastro"><label for="email" >Email</label>
-                                {{ form.email }}</div>
+                                {{ form.username }}</div>
                                 <div id="senha_cadastro"><label id="senha_cadastro1" for="senha1" >Senha</label>
                                 {{ form.password1 }}</div>
                                 
