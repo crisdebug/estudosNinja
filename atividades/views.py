@@ -2,14 +2,16 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.contrib.auth import login, authenticate
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin 
 
 from atividades.forms import SignUpForm, LogInForm
 
 # Create your views here.
+
+
 
 class SignUp(FormView):
     template_name = 'atividades/cadastro.html'
@@ -44,5 +46,6 @@ class LogIn(FormView):
             return self.form_invalid(form)
 
 
-def logou(request):
-    return render(request, 'atividades/logou.html')
+class LogouView(LoginRequiredMixin, TemplateView):
+    login_url = '/'
+    template_name = 'atividades/logou.html'

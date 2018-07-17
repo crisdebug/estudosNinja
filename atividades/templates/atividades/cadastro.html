@@ -6,58 +6,60 @@
         <link rel="stylesheet" href="{% static 'css/testes.css' %}">
         <title>Cadastro</title>
         <link rel="stylesheet" href="{% static 'bootstrap-4.1.1-dist/css/bootstrap.css' %}">
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+        <script src="{% static 'bootstrap-4.1.1-dist/js/bootstrap.min.js' %}"></script>
     </head>
     <body>
+        <header class="logo">
+            <h2>Estudos.Ninja</h2>
+        </header>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4>
+                        <i class="fa fa-warning"></i>
+                        Aviso:
+                    </h4>
+                    <p>{{ message }}</p>
+
+                </div>
+            {% endfor %}
+        {% endif %}
         <div class="bg-contact2" style="background-image: url('/static/imagens/bg-01.jpg');">
             <div class="container-contact2">
-                <header class="header_cadastro">
+                <div class="header_cadastro">
                     <h1 style="color: white;">Agora é só preencher os campos para se cadastrar!</h1>
-                </header>
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <h4>
-                                <i class="fa fa-warning"></i>
-                                Aviso:
-                            </h4>
-                                <p>{{ message }}</p>
+                </div>
 
-                        </div>
-                        {% endfor %}
-                        {% endif %}
-                <main>
-                    <div id="cadastro">
-                        <div><h1 class="cadastro">Cadastre-se</h1></div>
+                <main id="cadastro_teste" class="jumbotron jumbotron">
+                    <div >
+                        <div><h1 style="text-decoration: underline" class="cadastro">Cadastre-se</h1></div>
                         <hr class="my-4">
-                        
-                        <form method="POST" action="/cadastro/">
+
+                        <form id="form" method="POST" action="/cadastro/">
                             {% csrf_token %}
-                            <div class="nome_cadastro">               
-                                <div id="nome_cadastro"><label for="nome">Nome </label>
-                                {{ form.first_name }}</div>
-                                <div id="sobrenome_cadastro"><label id="sobrenome1" for="sobrenome">Sobrenome</label>
-                                {{ form.last_name }}</div>
-                            </sdiv>
-                            <div class="email_cadastro" >
-                                <div id="email_cadastro"><label for="email" >Email</label>
-                                {{ form.username }}</div>
-                                <div id="senha_cadastro"><label id="senha_cadastro1" for="senha1" >Senha</label>
-                                {{ form.password1 }}</div>
-                                
-                            </div>
-                            
-                            <div id="botoes" >
-                            <div class="botao_cadastro">
-                                
-                                <input class="inp1-" id="botao_cadastro1" type="submit" name="enviar" value="Cadastrar">
-                            </div>
-                                <label class="confirmar_cadastro1" for="confirma">Confirmar Senha</label>
-                                {{ form.password2 }}
-                            </div>
+                            <div id="inputs1" class="inputs"><label class="labels" for="nome">Nome</label>
+                            {{ form.first_name }}</div>
+
+                            <div id="inputs2" class="inputs"><label class="labels" for="nome">Sobrenome</label>
+                            {{ form.last_name }}</div>
+                        
+                            <div id="inputs3" class="inputs"><label class="labels" for="email">Email</label>
+                            {{ form.username }}</div>
+
+                            <div id="inputs4" class="inputs"><label class="labels" for="senha1" >Senha </label>
+                            {{ form.password1 }}</div>
+
+                            <div id="inputs5" class="inputs"><label class="labels" class="confirmar_cadastro1" for="confirma">Confirmar Senha</label>
+
+                            {{ form.password2 }}<span class="validity"></span></div>
+
+                            <div class="inputs"><input class="inp1-" id="botao_cadastro1" type="submit" name="enviar" value="Cadastrar"></div>
+                        
                         </form>
                     </div>
                 </main>       
@@ -68,6 +70,6 @@
         <footer>
             <div class="jumbotron jumbotron " style="background: rgba(41,44,51,0.6);">Estudos.Ninja &copy; Copyright 2018. Todos os direitos reservados à Estudos.Ninja Corporation</div>
         </footer>
-
+        
     </body>
 </html> 
