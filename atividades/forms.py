@@ -18,7 +18,7 @@ class SignUpForm(UserCreationForm):
 
 class LogInForm(AuthenticationForm):
     username = forms.EmailField(widget=forms.TextInput(attrs={'placeholder':'Email'}),max_length=254, help_text='Informe um Email válido', required=True)
-
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' : 'Senha'}), required=True, min_length=8, max_length=16)
     class Meta:
         model = User
         fields = ('username', 'password')

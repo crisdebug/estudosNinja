@@ -1,10 +1,10 @@
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, views as auth_views
 from django.views.generic import FormView, TemplateView
 from django.contrib import messages
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin 
 
 from atividades.forms import SignUpForm, LogInForm
@@ -20,6 +20,7 @@ class SignUp(FormView):
 
     def form_valid(self, form):
         aluno = form.save(commit = False)
+        aluno.email = form.cleaned_data['username']
         aluno.save()
         messages.success(self.request, "Aluno cadastrado com sucesso")
         return HttpResponseRedirect(self.get_success_url())
@@ -49,3 +50,4 @@ class LogIn(FormView):
 class LogouView(LoginRequiredMixin, TemplateView):
     login_url = '/'
     template_name = 'atividades/logou.html'
+

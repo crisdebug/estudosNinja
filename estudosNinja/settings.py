@@ -27,17 +27,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'atividades.apps.AtividadesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'atividades.apps.AtividadesConfig',
+    
     
 ]
 
@@ -123,3 +125,13 @@ STATIC_URL = '/static/'
 
 
 LOGIN_REDIRECT_URL = '/logou'
+
+
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'estudosninjanoreply@gmail.com'
+SERVER_EMAIL = 'estudosninjanoreply@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'estudosninjanoreply@gmail.com'
+EMAIL_HOST_PASSWORD = 'naoenada123'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
