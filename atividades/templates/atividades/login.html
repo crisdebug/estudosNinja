@@ -42,13 +42,10 @@
                                 <input class="inp1-" type="submit" name="enviar" value="Entrar">
                             </div>
 
-                            <div class="inp3">
-                                <p>Esqueceu sua senha? clique <a href="{% url 'password_reset' %}" target="">aqui</a> para recuperá-la.</p>
-                                <p>Não tem conta no Estudos.Ninja? <a href="{% url 'cadastro' %}" target="">Cadastre-se</a> agora mesmo e se torne um ninja nos estudos.</p>
-                            </div>
+                            
                         </form>
                         <div class="inp3">
-                            <p>Esqueceu sua senha? clique <a href="recuperar.html" target="">aqui</a> para recuperá-la.</p>
+                            <p>Esqueceu sua senha? clique <a href="{% url 'password_reset' %}" target="">aqui</a> para recuperá-la.</p>
                             <p>Não tem conta no Estudos.Ninja? <a href="{% url 'cadastro' %}" target="">Cadastre-se</a> agora mesmo e se torne um ninja nos estudos.</p>
                         </div>
                     </div>    
