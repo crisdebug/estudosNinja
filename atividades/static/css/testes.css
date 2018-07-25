@@ -68,6 +68,7 @@ main{
     border-radius: 10px;
     margin-top: ;
     margin-left: 20%;
+    box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.5);
   /*box-shadow: 0 10px 30px 0px rgba(132, 106, 221, 0.5);
   -moz-box-shadow: 0 10px 30px 0px rgba(132, 106, 221, 0.5);
   -webkit-box-shadow: 0 10px 30px 0px rgba(132, 106, 221, 0.5);
@@ -189,6 +190,7 @@ a:hover{
     text-align: center;
     margin-top: -20%;
     font-family: cursive;
+    box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.5);
 }
 .h3_mudar{
     margin-top: -4%;
@@ -203,6 +205,50 @@ a:hover{
 }
 #confirmar_senha{
     margin-right: 5%;
+}
+
+/*Página Turma*/
+
+#main-turma{
+    background: transparent;
+    color: #fff;
+    font-family: cursive;
+    height: 100%;
+    width: 100%;
+    float: center;
+    text-align: center;
+    margin-top: -20%;
+}
+#main-turma ul li{
+    text-decoration: none;
+    list-style: none;
+
+}
+.h{
+    margin-left: 5%;
+    float: left;
+}
+.h-1{
+    float: right;
+    color: gray;
+}
+
+#buttao{
+    padding: 15px 5% ;
+    float: center;
+    text-align: center;
+    background: #fff;
+    border-radius: .25rem; 
+    margin-bottom: 10px;
+    width: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+#buttao:hover{ 
+    transition: top 2s, color 3s ease;
+    transition: 2s;
+    bottom: 3px; 
+    color: blueviolet;
+    background: rgb(187, 243, 252);
 }
 
 /*Página de cadrasto */
@@ -220,8 +266,7 @@ a:hover{
     margin-right: 10px;
 }
 #cadastro_teste{
-    margin-top: -7%;
-    margin-left: ; 
+    margin-top: -7%; 
     display: block;
     text-align: center;
     width: 70%;
@@ -233,6 +278,7 @@ a:hover{
     font-family: cursive;
     margin-bottom: 15%;
     border-radius: 10px;
+    box-shadow: 0px 0px 10px white rgba(0, 0, 0, 0.5);
 }
 
 
@@ -278,6 +324,7 @@ a:hover{
     font-family: cursive;
     margin-bottom: 15%;
     border-radius: 10px;
+    box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.5);
 }
 
 #nome_cadastro{
@@ -332,14 +379,16 @@ input:valid + span:after {
     margin-top: -10%;
 }
 #fundo_turmas{
-    background: whitesmoke;
-    margin-bottom: -5%;
+    background: white;
+    margin-bottom: -2%;
+    box-shadow: 5px 0px 10px  rgba(10.0, 0.5, 0, 0.5);
 }
 #container_turmas{
-    background: whitesmoke;
+    background: transparent;
     width: 70%;
     font-family: cursive;
     border-radius: 10px;
+    
 }
 .criar_turma{
   
@@ -373,42 +422,41 @@ input:valid + span:after {
     float: left;
     vertical-align: top;
     margin-left: -10%;
-    margin-bottom: 30%;
+    margin-bottom: 34%;
     clear: both;
 }
 #enviar_turma{
     max-width: 100%;
     float: center;
-    margin-right: 40%;
+    margin-left: -5%;
     clear: both;
-    margin-top: -25px;
+    margin-top: -40px;
 }
 #enviar_turma0{
     max-width: 100%;
     margin-top: 10%;
-    margin-left: 15px;
+    margin-left: 25px;
     float: center;
-
 }
 .cd_turma{
     margin-bottom: 5%;
     width: 50%;
     float: right;
     display: block;
-    margin-right: -10%;
+    margin-right: -3%;
 }
 .nome_turma1{
     width: 50%;
     vertical-align: top;
     float: left;
-   
 }
 
 footer{
     text-align: center;
     margin-bottom: 0;
+    box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.5);
 }
-.bg-contact2, #bg-contact2 {
+.bg-contact2, .bg-contact2 {
     width: 100%;  
     background-repeat: no-repeat;
     background-position:center center;
@@ -416,6 +464,7 @@ footer{
     height: 100%;
     padding: 0;
     margin: 0;
+    font-family: cursive;
   }
 
   .container-contact2 {
@@ -453,20 +502,21 @@ footer{
 #adicionar_membro{
     width: 80%;
     float: center;
-   
-    
     padding: 10px;
     font-family: cursive;
-    background: whitesmoke;;
+    background: white;
+    box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.5);
 }
 #inserir_email{
     display: inline-block;
     width: 100%;
-    background: whitesmoke;;
+    background: whitesmoke;
+    box-shadow: 5px 10px 10px  rgba(0, 0, 0, 0.5);
 }
 .email_aluno{
     margin-left: 20%;
     margin-right: 5%;
+    font-family: cursive;
 }
 #enviar_membro{
 
@@ -474,30 +524,16 @@ footer{
 }
 /*Tela de Criar Atividade*/
 
-#main_criar_atividade{
-    width: 85%;
-    float: right;
-    height: 100%;
-    margin-bottom: 0%;
-}
-.html, .body{
-    height: 100%;
-} 
-#aside{
-    height: 100%;
-    width: 15%;
-    float: left;
-    display: block;
-    color: #fff;
-    margin-bottom: 2px;
-    font-family: cursive;
-}
 .formulario_criar_atividade{
+    color: white;
     float: center;
     display: block;
     align-items: baseline;
+    font-size: 20px;
     font-family: cursive;
-    font-display: block; 
+    font-display: block;
+    text-decoration: none;
+    /*box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.5);*/
 }
 .divs{
     width: 100%;
@@ -506,7 +542,10 @@ footer{
 #cancelar_atividade{
     margin-right: 10%;
     margin-left: -10%;
+    background: white;
+    color: black
 }
+
 #enviar_atividade{
     padding-left: 30px;
     padding-right: 30px;
@@ -520,7 +559,7 @@ footer{
  
 }
 .label2{
-margin-right: 15px;
+margin-right: 20px;
 }
 .label3{
     margin-right: 1px;
@@ -529,10 +568,14 @@ margin-right: 15px;
     vertical-align: top;
     margin-right: 10px;
 }
+textarea{
+    border-radius: 10px;
+}
 .footer{
     clear: both;
     width: 100%; 
     margin-bottom: 0%;
+    box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.5);
     
 }
 hr{
