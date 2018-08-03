@@ -1,0 +1,70 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8"> 
+        <title>Turmas</title>
+        <link rel="stylesheet" href="{% static 'css/testes.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'bootstrap-4.1.1-dist/css/bootstrap.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <header style="margin-bottom: -20px;">
+            <nav class="navbar bg-dark navbar-dark" style="margin-bottom:16px">
+                <a class="navbar-brand" href="turmas.html">Estudos.Ninja</a>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Buscar por">
+                    <button class="btn btn-success my-2 my-sm-0" type="button" style="background: rgba(185,0,255,0.5)">Buscar</button>
+                </form>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#x" style="background: rgba(185,0,255,0.5)">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="x">
+                    <ul class="nav navbar-nav" style="visibility: visible;">
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)">Link</a>
+                        </li>    
+                    </ul>
+                </div>  
+            </nav>    
+           
+        </header>
+            <div class="bg-contact2" style= "background-image: url('/static/imagens/bg-03.jpg')">
+                <div class="container-contact2">                 
+                    <main class="jumbotron jumbotron" id="container_turmas">
+                        <form class="jumbotron jumbotron" id="fundo_turmas" action="#" method="POST">
+                            <h4 class="display-5">Entre ou crie uma turma</h4>
+                            <hr class="my-4">
+                        <hr class="my-4">
+                        <form class="jumbotron jumbotron" id="fundo_turmas" action="membros.html" method="POST">
+                            <h3>Criar turma</h3>
+                            <div  class="criar_turma">
+                                <div id="nome_turma"><h3 class="nome_turma" class="h3"> Nome da Turma</h3><br>
+                                </div>
+
+                                <div id="input_turma">{{ form.nome }}
+                                <input id="enviar_turma" type="submit" value="Criar" class="btn btn-primary btn-lg" name="nome" role="button"></div>
+                            </div>  
+                        </form>
+                    </main>
+                </div>
+            </div>
+            
+        <footer>
+            <div class="jumbotron jumbotron" style="background: rgba(41,44,51,0.6);">Estudos.Ninja &copy; Copyright 2018. Todos os direitos reservados à Estudos.Ninja Corporation</div>
+        </footer>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>

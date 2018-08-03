@@ -23,10 +23,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.LogIn.as_view() , name='login'),
     path('cadastro/', views.SignUp.as_view(), name='cadastro'),
-    path('logou/', views.LogouView.as_view(), name='logou'),
+    #path('criar-turma/', views.CriarTurmaView.as_view(), name='criar-turma'),
     path('logout/', auth_views.logout, {'next_page':'/'}, name='logout'),
     path('password_reset/', auth_views.password_reset, name='password_reset'),
     path('password_reset/done/', auth_views.password_reset_done, name='password_reset_done'),
     path('reset/<slug:uidb64>/<slug:token>/', auth_views.password_reset_confirm, name='password_reset_confirm'),
-    path('reset/done/', auth_views.password_reset_complete, name='password_reset_complete')
+    path('reset/done/', auth_views.password_reset_complete, name='password_reset_complete'),
+    #path('e/<str:codigo>/', views.entrar_turma, name='vizualizar-turma'),
+    path('turmas/', views.VerTurmasView.as_view(), name='ver-turmas'),
 ]

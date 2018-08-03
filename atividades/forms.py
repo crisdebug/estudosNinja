@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from .models import Turma
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nome'}),max_length=30, required=True, help_text='*')
@@ -22,3 +23,10 @@ class LogInForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ('username', 'password')
+
+class CriarTurmaForm(forms.Form):
+    nome = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Nome da Turma', 'class':'input_turma'}), max_length=256, help_text='Informe um nome para a turma', required=True)
+
+    class Meta:
+        model = Turma
+        fields = ('nome')

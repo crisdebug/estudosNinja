@@ -15,7 +15,21 @@
                 <header>
                     <h1 style="color: white;">O Estudos.Ninja é uma plataforma web pensada para você se organizar nos seus estudos.</h1>
                 </header>
+                {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4>
+                        <i class="fa fa-warning"></i>
+                        Aviso:
+                    </h4>
+                    <p>{{ message }}</p>
 
+                </div>
+            {% endfor %}
+        {% endif %}
                 <main >
                     <div class="jumbotron jumbotron" id="container">
                         <section class="cabeçalho">
@@ -27,12 +41,12 @@
                             <div class="primeiros">
                                 <div class="inp" id="esp">
                                     <label class="inp_inp" id="inp" for="email">Email</label>
-                                    <input type="email" placeholder="exemplo@exemplo.com" size="35" autofocus name="email" id="email" required {{ form.username }}    
+                                    {{ form.username }}    
                                 </div>
 
                                 <div class="inp">
                                     <label class="inp_inp" for="senha">Senha</label>
-                                    <input  type="password" placeholder="Senha" size="35" name="senha" id="senha" required {{ form.password }}
+                                     {{ form.password }}
                                 </div>
                             </div>
 

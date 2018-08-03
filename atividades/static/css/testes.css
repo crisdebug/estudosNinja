@@ -221,7 +221,7 @@ a:hover{
 }
 #cadastro_teste{
     margin-top: -7%;
-    margin-left: ; 
+     
     display: block;
     text-align: center;
     width: 70%;
@@ -361,6 +361,7 @@ input:valid + span:after {
     max-width: 50%;
     margin-right: 10%;
     vertical-align: top;
+
 }
 .nome_turma{
     max-width: 100%;

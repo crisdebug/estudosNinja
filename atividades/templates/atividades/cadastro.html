@@ -40,23 +40,23 @@
                         <div><h1 style="text-decoration: underline" class="cadastro">Cadastre-se</h1></div>
                         <hr class="my-4">
 
-                        <form id="form" method="POST" action="/turmas/">
+                        <form id="form" method="POST">
                             {% csrf_token %}
                             <div id="inputs1" class="inputs"><label class="labels" for="nome">Nome</label>
-                                <input class="input" id="nome" type="text" placeholder="Nome" autofocus size="30" required {{ form.first_name }} </div>
+                                {{ form.first_name }}
     
                                 <div id="inputs2" class="inputs"><label class="labels" for="nome">Sobrenome</label>
-                                <input class="input" id="sobrenome" name="sobrenome" type="text" placeholder="Sobrenome" size="30" required {{ form.last_name }} </div>
+                                {{ form.last_name }} 
                             
                                 <div id="inputs3" class="inputs"><label class="labels" for="email">Email</label>
                                 <input class="input" id="email" type="email" placeholder="exemplo@exemplo.com" size="30" required autocomplete="email" {{ form.username }} </div>
     
                                 <div id="inputs4" class="inputs"><label class="labels" for="senha1" >Senha </label>
-                                <input class="input" id="password" type="password" placeholder="Senha" size="30" required name="senha1" {{ form.password1 }} </div>
+                                 {{ form.password1 }} </div>
     
                                 <div id="inputs5" class="inputs"><label class="labels" class="confirmar_cadastro1" for="confirma">Confirmar Senha</label>
     
-                                <input class="input" id="confirm_password" type="password" placeholder="Confirmar Senha" size="30" required name="confirma" onclick="validarSenha()"  {{ form.password2 }} <span class="validity"> </span></div>
+                                {{ form.password2 }} </div>
     
                                 <div class="inputs"><input class="inp1-" id="botao_cadastro1" type="submit" name="enviar" value="Cadastrar"></div>
                             <!--{% csrf_token %}
