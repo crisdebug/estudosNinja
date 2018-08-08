@@ -165,7 +165,7 @@ a{
 a:hover{
     color: red;
     transition: top 2s, color 1s ease;
-    bottom: 3px;
+    bottom: 2px;
 }
 #login, #cadastro,{
     text-decoration-line: underline;
@@ -180,9 +180,6 @@ a:hover{
     margin-top: -17%;
 }
 
-#main_mudar_senha {
-    
-}
 #formulario_mudar_senha{
     background: whitesmoke;
     width: 80%;
@@ -196,11 +193,11 @@ a:hover{
     margin-top: -4%;
 }
 #botao_mudar{
-    margin-left: -8%;
+    margin-left: -5%;
     max-width: 100%;
 }
 #nova_senha{
-    margin-left: 4%;
+    margin-left: 5%;
     margin-right: 5%;
 }
 #confirmar_senha{
@@ -248,7 +245,7 @@ a:hover{
     transition: 2s;
     bottom: 3px; 
     color: blueviolet;
-    background: rgb(187, 243, 252);
+    background: #f2f4f6;
 }
 
 /*Página de cadrasto */
@@ -256,11 +253,13 @@ a:hover{
 /*Cadastro_teste*/
 
 #inputs2{
-    margin-left: -7%; 
-
+    margin-left: -9%; 
+}
+#inputs3{
+    margin-left: 1%;
 }
 #inputs5{
-    margin-left: -12%;
+    margin-left: -18%;
 }
 .labels{
     margin-right: 10px;
@@ -424,6 +423,7 @@ input:valid + span:after {
     margin-left: -10%;
     margin-bottom: 34%;
     clear: both;
+    background: #f2f4f6;
 }
 #enviar_turma{
     max-width: 100%;
@@ -525,7 +525,6 @@ footer{
 /*Tela de Criar Atividade*/
 
 .formulario_criar_atividade{
-    color: white;
     float: center;
     display: block;
     align-items: baseline;
@@ -555,9 +554,7 @@ footer{
     float: right;
     margin-left: ;
 }
-.label1{
- 
-}
+
 .label2{
 margin-right: 20px;
 }

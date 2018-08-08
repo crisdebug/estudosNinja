@@ -16,4 +16,4 @@ class Turma(models.Model):
 
 class Aluno_em_Turma(models.Model):
     id_usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    codigo_turma = models.CharField(max_length=5)
+    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)

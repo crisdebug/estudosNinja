@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="pt-BR">
     <head>
-        <meta charset="utf-8"> 
+        <meta charset="utf-8">
         <title>Turmas</title>
         <link rel="stylesheet" href="{% static 'css/testes.css' %}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,33 +33,34 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="javascript:void(0)">Link</a>
-                        </li>    
+                        </li>
                     </ul>
-                </div>  
-            </nav>    
-           
+                </div>
+            </nav>
+
         </header>
             <div class="bg-contact2" style= "background-image: url('/static/imagens/bg-03.jpg')">
-                <div class="container-contact2">                 
+                <div class="container-contact2">
                     <main class="jumbotron jumbotron" id="container_turmas">
                         <form class="jumbotron jumbotron" id="fundo_turmas" action="#" method="POST">
                             <h4 class="display-5">Entre ou crie uma turma</h4>
                             <hr class="my-4">
                         <hr class="my-4">
-                        <form class="jumbotron jumbotron" id="fundo_turmas" action="membros.html" method="POST">
+                        <form class="jumbotron jumbotron" id="fundo_turmas" method="POST">
+                          {% csrf_token %}
                             <h3>Criar turma</h3>
-                            <div  class="criar_turma">
+                            <div class="criar_turma">
                                 <div id="nome_turma"><h3 class="nome_turma" class="h3"> Nome da Turma</h3><br>
                                 </div>
 
                                 <div id="input_turma">{{ form.nome }}
-                                <input id="enviar_turma" type="submit" value="Criar" class="btn btn-primary btn-lg" name="nome" role="button"></div>
-                            </div>  
+                                <input id="enviar_turma" type="submit" value="Criar" class="btn btn-primary btn-lg" name="criar" role="button"></div>
+                            </div>
                         </form>
                     </main>
                 </div>
             </div>
-            
+
         <footer>
             <div class="jumbotron jumbotron" style="background: rgba(41,44,51,0.6);">Estudos.Ninja &copy; Copyright 2018. Todos os direitos reservados à Estudos.Ninja Corporation</div>
         </footer>

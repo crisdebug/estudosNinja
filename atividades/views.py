@@ -50,36 +50,38 @@ class LogIn(FormView):
         else:
             return self.form_invalid(form)
 
-class CriarTurmaView(LoginRequiredMixin, FormView):
-    form_class = CriarTurmaForm
-    template_name = 'atividades/criar_turma.html'
-
-
-    def form_valid(self, form):
-        turma = form.save(commit = False)
-        turma.codigo = gerar_codigo()
-        turma.save()
-
-    '''success_url = redirect('e/%s' %turma.codigo)'''
-
-
+@login_required
+def criar_turma(request):
+    if request.method == 'POST':
+        form = CriarTurmaForm(request.POST)
+        if form.is_valid():
+            codigo = gerar_codigo()
+            turma = Turma.objects.create(nome=form.cleaned_data['nome'], codigo=codigo)
+        return redirect('entrar-turma', codigo=codigo)
+    else:
+        form = CriarTurmaForm()
+    return render(request, 'atividades/criar_turma.html', {'form':form})
 
 @login_required
 def entrar_turma(request, codigo):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         if testar_codigo(codigo):
-            a = Aluno_em_Turma.objects.create(id_usuario=request.user.get_id(), codigo=codigo)
+            a = Aluno_em_Turma.objects.create(id_usuario=request.user, turma=Turma.objects.get(codigo__exact=codigo))
             a.save()
-            return HttpResponseRedirect('v/%s' % codigo)
+            return redirect('ver-turma', codigo=codigo)
     return render(request, 'atividades/entrar_falhou.html')
 
 
-class VerTurmasView(LoginRequiredMixin, ListView):
-    template_name = 'atividades/turmas.html'
-    def get_queryset(self):
-        print("user")
-        print(self.request.user)
-        return Aluno_em_Turma.objects.filter(id_usuario=self.request.user)
+@login_required
+def ver_turmas(request):
+    turmas = Aluno_em_Turma.objects.filter(id_usuario=request.user)
+    print(turmas)
+    return render(request, 'atividades/turmas.html', {'turmas':turmas})
+
+@login_required
+def ver_turma(request, codigo):
+    turma = Turma.objects.get(codigo__exact=codigo)
+    return render(request, 'atividades/ver_turma.html', {'turma': turma})
 
 def gerar_codigo(size=5, chars=string.ascii_uppercase+string.ascii_lowercase+string.digits):
     codigo = ''.join(random.choice(chars) for x in range(size))
@@ -87,7 +89,7 @@ def gerar_codigo(size=5, chars=string.ascii_uppercase+string.ascii_lowercase+str
 
 def testar_codigo(codigo):
     try:
-        Turma.objects.get(codigo=codigo)
+        Turma.objects.get(codigo__exact=codigo)
         return True
     except:
         return False
