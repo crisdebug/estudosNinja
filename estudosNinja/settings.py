@@ -33,14 +33,16 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'atividades.apps.AtividadesConfig',
+    'django.contrib.sites',
+    'django_comments',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    
+
+
 ]
 
 MIDDLEWARE = [
@@ -135,3 +137,5 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'estudosninjanoreply@gmail.com'
 EMAIL_HOST_PASSWORD = 'naoenada123'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+SITE_ID = '1'

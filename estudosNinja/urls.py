@@ -15,7 +15,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from atividades import views
 
@@ -31,5 +31,8 @@ urlpatterns = [
     path('reset/done/', auth_views.password_reset_complete, name='password_reset_complete'),
     path('e/<str:codigo>/', views.entrar_turma, name='entrar-turma'),
     path('turmas/', views.ver_turmas, name='ver-turmas'),
-    path('v/<str:codigo>/', views.ver_turma, name='ver-turma')
+    path('v/<str:codigo>/', views.ver_turma, name='ver-turma'),
+    path('v/<str:codigo_turma>/criar', views.criar_atividade, name='criar-atividade'),
+    path('v/<str:codigo_turma>/a/<int:ak>', views.ver_atividade, name='ver-atividade'),
+    path('comments/', include('django_comments.urls'))
 ]

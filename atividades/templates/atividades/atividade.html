@@ -1,0 +1,19 @@
+{% load comments %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ atividade.nome }}</title>
+  </head>
+  <body>
+    <h3>{{ atividade.nome }}</h3>
+    <h6>{{ atividade.entrega }}</h6>
+    <h6>{{ atividade.nota }}</h6>
+    <h6>{{ atividade.obs }}</h6>
+    <br>
+    <br>
+    {% render_comment_list for atividade %}
+
+    {% render_comment_form for atividade %}
+  </body>
+</html>

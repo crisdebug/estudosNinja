@@ -9,5 +9,11 @@
       Nome: {{ turma.nome }}
       Codigo: {{ turma.codigo }}
     </h3>
+
+    {% for atividade in atividades %}
+      <a href="v/{{ turma.codigo }}/a/{{ atividade.id }}">
+        {{ atividade.nome }}
+      </a>
+    {% endfor %}
   </body>
 </html>

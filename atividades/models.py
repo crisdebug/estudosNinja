@@ -17,3 +17,17 @@ class Turma(models.Model):
 class Aluno_em_Turma(models.Model):
     id_usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
+
+
+class Atividade(models.Model):
+    nome = models.CharField(max_length=256)
+    entrega = models.DateField()
+    nota = models.CharField(max_length=256)
+    obs = models.TextField()
+    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
+    criador = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+
+    class Meta:
+        verbose_name = 'Atividade'
+        verbose_name_plural = 'Atividades'
