@@ -7,8 +7,9 @@
         <link rel="stylesheet" href="{% static 'css/testes.css' %}">
         <title>Cadastro</title>
         <link rel="stylesheet" href="{% static 'bootstrap-4.1.1-dist/css/bootstrap.css' %}">
-        
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{% static 'bootstrap-4.1.1/js/bootstrap.min.js' %}"></script>
     </head>
     <body>
         <header class="logo">
@@ -22,7 +23,7 @@
                 </div>
                 {% if messages %}
                     {% for message in messages %}
-                        <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+                        <div class="alert alert-danger" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

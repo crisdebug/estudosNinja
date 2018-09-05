@@ -99,9 +99,17 @@ def sair(request):
 
 class VerTurmaView(LoginRequiredMixin, ListView):
     template_name = 'atividades/ver_turma.html'
+
+    def dispatch(self, request, codigo):
+        if not testar_codigo(codigo):
+            return render(request, 'atividades/turma_inexistente.html', {})
+        return super(VerTurmaView, self).dispatch(request, codigo)
+
+
     def get_context_data(self, **kwargs):
         context = super(VerTurmaView, self).get_context_data(**kwargs)
-        turma = Turma.objects.get(codigo=self.kwargs['codigo'])
+        a = Aluno_em_Turma.objects.get(turma=Turma.objects.get(codigo=self.kwargs['codigo']), id_usuario=self.request.user)
+        turma = a.turma
         print(self.kwargs['codigo'])
         context['turma'] = turma
         return context
@@ -139,9 +147,16 @@ class CriarAtividadeView(LoginRequiredMixin, FormView):
 class VerAtividadeView(LoginRequiredMixin, TemplateView):
     template_name = 'atividades/atividade.html'
 
+    def dispatch(self, request, codigo_turma, ak):
+        try:
+            Atividade.objects.get(id=ak)
+            return super(VerAtividadeView, self).dispatch(request, codigo_turma, ak)
+        except:
+            return render(request, 'atividades/atividade_inexistente.html', {'turma':Turma.objects.get(codigo=codigo_turma)})
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['atividade'] = Atividade.objects.get(id=self.kwargs['ak'])
+        context['atividade'] = Atividade.objects.get(turma=Turma.objects.get(codigo=self.kwargs['codigo_turma'], id=self.kwargs['ak']))
         return context
 
 def testar_codigo(codigo):
