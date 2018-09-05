@@ -56,9 +56,8 @@ class LoginAluno(FormView):
                 login(request, user)
 
                 return redirect('ver-turmas')
-            
-
-        return render(request, 'atividades/login.html', {'form':self.get_form})
+        messages.error(request, 'Um ou mais campos estão incorretos')
+        return render(request, 'atividades/login.html', {'form':self.get_form()})
 class CriarTurmaView(LoginRequiredMixin, FormView):
     template_name = 'atividades/criar_turma.html'
     form_class = CriarTurmaForm

@@ -16,7 +16,7 @@
                 <header>
                     <h1 style="color: white;">O Estudos.Ninja é uma plataforma web pensada para você se organizar nos seus estudos.</h1>
                 </header>
-                {% if messages %}
+            {% if messages %}
             {% for message in messages %}
                 <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
