@@ -6,14 +6,13 @@
     <title>{{ atividade.nome }}</title>
   </head>
   <body>
+    <a href='/v/{{ atividade.turma.codigo }}'>Voltar</a>
+    <h3>{{ atividade.disciplina }}</h3>
     <h3>{{ atividade.nome }}</h3>
     <h6>{{ atividade.entrega }}</h6>
     <h6>{{ atividade.nota }}</h6>
     <h6>{{ atividade.obs }}</h6>
     <br>
     <br>
-    {% render_comment_list for atividade %}
-
-    {% render_comment_form for atividade %}
   </body>
 </html>

@@ -3,14 +3,16 @@ import random
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render, redirect
-from django.contrib.auth import login, authenticate, views as auth_views
-from django.views.generic import FormView, TemplateView, ListView
+from django.contrib.auth import login, logout, authenticate, views as auth_views
+from django.views.generic import FormView, TemplateView, ListView, RedirectView
 from django.contrib import messages
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from datetime import datetime
 
-from atividades.forms import SignUpForm, LogInForm, CriarTurmaForm, CriarAtividadeForm
+from atividades.forms import SignUpForm, LogInForm, CriarTurmaForm, CriarAtividadeForm, EntrarTurmaForm
 from atividades.models import Aluno_em_Turma, Turma, Atividade
 
 # Create your views here.
@@ -20,83 +22,128 @@ from atividades.models import Aluno_em_Turma, Turma, Atividade
 class SignUp(FormView):
     template_name = 'atividades/cadastro.html'
     form_class = SignUpForm
-    success_url = reverse_lazy('criar-turma')
+    success_url = reverse_lazy('ver-turmas')
 
     def form_valid(self, form):
         aluno = form.save(commit = False)
         aluno.email = form.cleaned_data['username']
         aluno.save()
-        messages.success(self.request, "Aluno cadastrado com sucesso")
-        return HttpResponseRedirect(self.get_success_url())
+        user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
+        login(self.request, user)
+        return redirect('ver-turmas')
     
     def form_invalid(self, form):
         messages.error(self.request, "Por favor, preencha corretamente os campos")
         return self.render_to_response(self.get_context_data(form = form))
 
-
-class LogIn(FormView):
+class LoginAluno(FormView):
     template_name = 'atividades/login.html'
     form_class = LogInForm
     success_url = reverse_lazy('ver-turmas')
 
-    def form_valid(self, form):
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password']
+    def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('ver-turmas')
+        return super(LoginAluno, self).get(request)
+    
+    def post(self, request):
+        username = request.POST['username']
+        password = request.POST['password']
         user = authenticate(username=username, password=password)
 
-        if user is not None and user.is_active:
-            login(self.request, user)
-            return super(LogIn, self).form_valid(form)
-        else:
-            return self.form_invalid(form)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
 
-def criar_turma(request):
-    if request.method == 'POST':
-        form = CriarTurmaForm(request.POST)
-        if form.is_valid():
-            codigo = gerar_codigo()
-            return HttpResponseRedirect('entrar-turma', codigo=codigo)
-    else:
-        form = CriarTurmaForm()
-    return render(request, 'atividades/criar_turma.html', {'form':form})
+                return redirect('ver-turmas')
+            
+
+        return render(request, 'atividades/login.html', {'form':form})
+class CriarTurmaView(LoginRequiredMixin, FormView):
+    template_name = 'atividades/criar_turma.html'
+    form_class = CriarTurmaForm
+
+    def post(self, request):
+        nome = request.POST['nome']
+        codigo = gerar_codigo()
+        t = Turma.objects.create(nome=nome, codigo=codigo)
+        return redirect('adicionar-aluno', codigo=codigo)
+
 
 @login_required
-def entrar_turma(request, codigo):
-    if request.user.is_authenticated():
+def adicionar_aluno(request, codigo):
+    if request.user.is_authenticated:
         if testar_codigo(codigo):
-            a = Aluno_em_Turma(id_usuario=request.user.get_id(), codigo=codigo)
-            a.save()
-            return HttpResponseRedirect('v/%s' % codigo)
-    return render(request, '')
+            q = Aluno_em_Turma.objects.filter(id_usuario=request.user, turma=Turma.objects.get(codigo__exact=codigo))
+            if q.exists():
+                return redirect('ver-turma', codigo=codigo)
+            else:    
+                a = Aluno_em_Turma.objects.create(id_usuario=request.user, turma=Turma.objects.get(codigo__exact=codigo))
+                a.save()
+                return redirect('ver-turma', codigo=codigo)
+    return render(request, 'atividades/entrar_falhou.html')
+
+
+class EntrarTurmaView(LoginRequiredMixin, FormView):
+    template_name = 'atividades/entrar_turma.html'
+    form_class = EntrarTurmaForm
+
+    def post(self, request):
+        codigo = request.POST['codigo']
+        return redirect('adicionar-aluno', codigo=codigo)
 
 @login_required
-def ver_turma(request, codigo):
-    turma = Turma.objects.get(codigo=codigo)
-    atividades = Atividade.objects.filter(turma=turma)
-    return render(request, 'atividades/ver_turma.html', {'atividades':atividades, 'turma':turma})
+def sair(request):
+    if request.user.is_authenticated:
+        logout(request)
+    return redirect('login')
 
-@login_required
-def ver_turmas(request):
-    turmas = Aluno_em_Turma.objects.filter(id_usuario=request.user)
-    return render(request, 'atividades/turmas.html', {'turmas':turmas})
+class VerTurmaView(LoginRequiredMixin, ListView):
+    template_name = 'atividades/ver_turma.html'
+    def get_context_data(self, **kwargs):
+        context = super(VerTurmaView, self).get_context_data(**kwargs)
+        turma = Turma.objects.get(codigo=self.kwargs['codigo'])
+        print(self.kwargs['codigo'])
+        context['turma'] = turma
+        return context
+    
+    def get_queryset(self):
+        codigo = self.kwargs['codigo']
+        turma = Turma.objects.get(codigo=codigo)
+        print(turma)
+        queryset = Atividade.objects.filter(turma=turma)
+        return queryset
 
-@login_required
-def criar_atividade(request, codigo_turma):
-    if request.method == 'POST':
-        atividade = CriarAtividadeForm(request.POST).save(commit=False)
-        atividade.turma = Turma.objects.get(codigo=codigo)
-        atividade.criador = request.user
-        atividade.save()
-        return HttpResponseRedirect('ver-atividade', codigo=codigo, ak=atividade.id)
+class TurmasView(LoginRequiredMixin, ListView):
+    template_name = 'atividades/turmas.html'
 
-    else:
-        form = CriarAtividadeForm()
-    return render(request, 'atividade/criar_atividade.html', {'form':form})
+    def get_queryset(self):
+        user = self.request.user
+        return Aluno_em_Turma.objects.filter(id_usuario=user)
 
-@login_required
-def ver_atividade(request, codigo_turma, ak):
-    atividade = Atividade.objects.get(id=ak, turma=Turma.objects.get(codigo=codigo_turma))
-    return render(request, 'atividades/atividade.html', {'atividade':atividade})
+class CriarAtividadeView(LoginRequiredMixin, FormView):
+    template_name = 'atividades/criar_atividade.html'
+    form_class = CriarAtividadeForm
+
+    def post(self, request, codigo_turma):
+        disciplina = request.POST['disciplina']
+        nome = request.POST['nome']
+        data = request.POST['entrega']
+        entrega = datetime.strptime(data, "%d/%m/%Y").date()
+        nota = request.POST['nota']
+        obs = request.POST['obs']
+        turma = Turma.objects.get(codigo=codigo_turma)
+        user = request.user
+        a = Atividade.objects.create(disciplina=disciplina, nome=nome, entrega=entrega, nota=nota, obs=obs, turma=turma, criador=user)
+        return redirect('ver-atividade', codigo_turma=turma.codigo, ak=a.id)
+
+class VerAtividadeView(LoginRequiredMixin, TemplateView):
+    template_name = 'atividades/atividade.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['atividade'] = Atividade.objects.get(id=self.kwargs['ak'])
+        return context
 
 def testar_codigo(codigo):
     try:

@@ -20,6 +20,7 @@ class Aluno_em_Turma(models.Model):
 
 
 class Atividade(models.Model):
+    disciplina = models.CharField(max_length=256, null=True)
     nome = models.CharField(max_length=256)
     entrega = models.DateField()
     nota = models.CharField(max_length=256)

@@ -21,18 +21,20 @@ from atividades import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.LogIn.as_view() , name='login'),
+    path('',views.LoginAluno.as_view() , name='login'),
     path('cadastro/', views.SignUp.as_view(), name='cadastro'),
-    path('criar-turma/', views.criar_turma, name='criar-turma'),
+    path('criar-turma/', views.CriarTurmaView.as_view(), name='criar-turma'),
     path('logout/', auth_views.logout, {'next_page':'/'}, name='logout'),
     path('password_reset/', auth_views.password_reset, name='password_reset'),
     path('password_reset/done/', auth_views.password_reset_done, name='password_reset_done'),
     path('reset/<slug:uidb64>/<slug:token>/', auth_views.password_reset_confirm, name='password_reset_confirm'),
     path('reset/done/', auth_views.password_reset_complete, name='password_reset_complete'),
-    path('e/<str:codigo>/', views.entrar_turma, name='entrar-turma'),
-    path('turmas/', views.ver_turmas, name='ver-turmas'),
-    path('v/<str:codigo>/', views.ver_turma, name='ver-turma'),
-    path('v/<str:codigo_turma>/criar', views.criar_atividade, name='criar-atividade'),
-    path('v/<str:codigo_turma>/a/<int:ak>', views.ver_atividade, name='ver-atividade'),
+    path('e/<str:codigo>/', views.adicionar_aluno, name='adicionar-aluno'),
+    path('entrar/', views.EntrarTurmaView.as_view(), name='entrar-turma'),
+    path('turmas/', views.TurmasView.as_view(), name='ver-turmas'),
+    path('v/<str:codigo>/', views.VerTurmaView.as_view(), name='ver-turma'),
+    path('v/<str:codigo_turma>/criar', views.CriarAtividadeView.as_view(), name='criar-atividade'),
+    path('v/<str:codigo_turma>/a/<int:ak>', views.VerAtividadeView.as_view(), name='ver-atividade'),
+    path('sair/', views.sair, name='sair'),
     path('comments/', include('django_comments.urls'))
 ]

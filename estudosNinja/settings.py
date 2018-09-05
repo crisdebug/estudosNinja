@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'atividades.apps.AtividadesConfig',
+    'comments.apps.CommentsConfig',
     'django.contrib.sites',
     'django_comments',
     'django.contrib.admin',
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'widget_tweaks',
 
 ]
 
@@ -126,8 +127,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-LOGIN_REDIRECT_URL = '/logou'
-
+LOGIN_REDIRECT_URL = '/turmas'
+LOGOUT_REDIRECT_URL = ''
+DATE_FORMAT = '%d/%m/%y %H:%M:%S'
 
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'estudosninjanoreply@gmail.com'
@@ -139,3 +141,4 @@ EMAIL_HOST_PASSWORD = 'naoenada123'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 SITE_ID = '1'
+COMMENTS_APP = 'comments'

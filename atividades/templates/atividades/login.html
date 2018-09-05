@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -41,12 +42,13 @@
                             <div class="primeiros">
                                 <div class="inp" id="esp">
                                     <label class="inp_inp" id="inp" for="email">Email</label>
-                                    {{ form.username }}    
+                                    {% render_field form.username placeholder+="exemplo@exemplo.com" size+='35' id+='email' required="True" max_length+="254" required="True" help_text+='Informe um Email válido' %}
+                                        
                                 </div>
 
                                 <div class="inp">
-                                    <label class="inp_inp" for="senha">Senha</label>
-                                     {{ form.password }}
+                                    <label class="inp_inp" id="inp" for="senha">Senha</label>
+                                    {% render_field form.password placeholder+="Senha" size+='35', id+='email' type="password" required="True", min_length+="8", max_length+="16" %}
                                 </div>
                             </div>
 
