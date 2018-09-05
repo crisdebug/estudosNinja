@@ -58,7 +58,7 @@ class LoginAluno(FormView):
                 return redirect('ver-turmas')
             
 
-        return render(request, 'atividades/login.html', {'form':form})
+        return render(request, 'atividades/login.html', {'form':self.get_form})
 class CriarTurmaView(LoginRequiredMixin, FormView):
     template_name = 'atividades/criar_turma.html'
     form_class = CriarTurmaForm
