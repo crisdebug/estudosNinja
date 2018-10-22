@@ -3,6 +3,7 @@
 {% load static %}
 {% load widget_tweaks %}
 
+<<<<<<< HEAD
 {% block title %} <title>Entrar em Turma</title> {% endblock %}
 
 {% block conteudo %}
@@ -14,6 +15,20 @@
                     {% csrf_token %}
                     <br>
                     <h4 class="display-5">Entre ou <a href="{% url 'criar-turma' %}"> <code style="color: #e83e8c;"> crie</a> </code> uma turma</h4>
+=======
+{% block title %} <title>Entrar em Truma</title> {% endblock %}
+
+{% block conteudo %}
+
+    <body>
+    <div class="bg-contact2" style= "background-image: url('/static/imagens/bg-04.jpg');">
+        <div class="container-contact2">                 
+            <main class="jumbotron jumbotron" id="container_turmas"> 
+                <form class="jumbotron jumbotron" id="fundo_turmas" method="POST">
+                    {% csrf_token %}
+                    <br>
+                    <h4 class="display-5">Entre ou <a style="text-decoration: underline;" href="{% url 'criar-turma' %}">crie</a> uma turma</h4>
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
                     <hr class="my-4">
                     <br>
                     <h3 style="margin-top: -25px;">Entrar em Turma</h3>
@@ -21,6 +36,7 @@
                     
                     <br>
                     <br>
+<<<<<<< HEAD
                     <div class="criar_turma1" style="margin-bottom: 0%; height: 50px;">                               
                         <div><h3 class="nome_turma1" id="h3">Código da Turma</h3></div>
                         <div style="margin-left: 30%;"> {% render_field form.codigo class+="input_turma" placeholder+="Código da turma" autofocus+="True" required+="True" size+="20" maxlenght+="5 " %}
@@ -28,6 +44,16 @@
                     </div>
                 </form> 
            
+=======
+                    <div class="criar_turma1">                               
+                        <div><h3 class="nome_turma1" id="h3">Código da Turma</h3></div>
+                        <div class="cd_turma">{{ form.codigo }}
+                        <br>
+                        <input id="enviar_turma0" type="submit" value="Entrar"  class="btn btn-primary btn-lg" name="nome" role="button"></div>
+                    </div>
+                </form>
+            </main>
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
         </div>
     </div>
   {% endblock %}

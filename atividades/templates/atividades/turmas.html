@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'atividades/_layouts/layout.html' %}
 
 {% load staticfiles %}
@@ -34,15 +35,59 @@
                     <div class="text-center mt-5 mb-5 jumbotron">
                         <h5 style="color: #000;">Você não está em nenhuma <code>Turma</code> ainda.</h5>
 
+=======
+{% extends "atividades/_layouts/layout.html" %} {% load staticfiles %} {% block title %}
+<title>Turmas</title> {% endblock %} {% load widget_tweaks %} {% block img %}
+<link rel="shortcut icon" href="{% static 'imgens/bg-10.png' %}" type="image/png"> {% endblock %} {% block ativo %}"class+='active'"{% endblock %} {% block conteudo %}
+
+<body>
+    <div class="bg-contact2" style="background-image: url('/static/imagens/bg-10.jpg');">
+        <div class="container-contact2">
+            <main id="main-turma" class="jumbotron jumbotron-fuid">
+                <h3 style="text-align: center;">Turmas que você está</h3>
+                <hr style="background: gray; height: 0.05px; margin-bottom: 5%;" class="my-6">
+                <ul class="lista">
+                    {% if object_list|length > 0 %}
+                    {% for turma in object_list %} 
+                    <table>
+                        <tr>
+                            
+                            <td>
+                                
+                                <button class=" card-primary card-outline" id="buttao" type="button">
+                                        <a href="/v/{{ turma.turma.codigo }}">
+                                    <li class="item"><a href="/v/{{ turma.turma.codigo }}"><h1 class="h">{{ turma.turma.nome }}</h1>
+                                            <h2 class="h-1">{{ turma.turma.codigo }}</h2></a></li>
+                                        </a>
+                                </button>
+                            
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    {% endfor %}
+                    {% else %}
+                    <div class="text-center mt-5 mb-5 jumbotron">
+                        <h5 style="color: #000000;">Você não está em nenhuma <code>Turma</code> ainda.</h5>
+
+                        {% endif %}
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
                         <div class="text-right">
                             <a href="{% url 'entrar-turma' %}" class="btn btn-primary">
                                 Entrar Em Turma
                             </a>
                         </div>
+<<<<<<< HEAD
                         {% endif %}
+=======
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
                     </div>
                 </ul>
             </main>
         </div>
     </div>
+<<<<<<< HEAD
+=======
+</body>
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
 {% endblock %}

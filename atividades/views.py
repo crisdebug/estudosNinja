@@ -56,10 +56,24 @@ class LoginAluno(FormView):
                 login(request, user)
 
                 return redirect('ver-turmas')
+<<<<<<< HEAD
             
 
         return render(request, 'atividades/login.html', {'form':self.get_form()})
 
+=======
+        messages.error(request, 'Um ou mais campos estão incorretos')
+        return render(request, 'atividades/login.html', {'form':self.get_form()})
+class CriarTurmaView(LoginRequiredMixin, FormView):
+    template_name = 'atividades/criar_turma.html'
+    form_class = CriarTurmaForm
+
+    def post(self, request):
+        nome = request.POST['nome']
+        codigo = gerar_codigo()
+        t = Turma.objects.create(nome=nome, codigo=codigo)
+        return redirect('adicionar-aluno', codigo=codigo)
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
 
 
 @login_required
@@ -75,6 +89,7 @@ def adicionar_aluno(request, codigo):
                 return redirect('ver-turma', codigo=codigo)
     return render(request, 'atividades/entrar_falhou.html')
 
+<<<<<<< HEAD
 class CriarTurmaView(LoginRequiredMixin, FormView):
     template_name = 'atividades/criar_turma.html'
     form_class = CriarTurmaForm
@@ -86,6 +101,8 @@ class CriarTurmaView(LoginRequiredMixin, FormView):
         return redirect('adicionar-aluno', codigo=codigo)
 
 
+=======
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
 
 class EntrarTurmaView(LoginRequiredMixin, FormView):
     template_name = 'atividades/entrar_turma.html'
@@ -103,9 +120,23 @@ def sair(request):
 
 class VerTurmaView(LoginRequiredMixin, ListView):
     template_name = 'atividades/ver_turma.html'
+<<<<<<< HEAD
     def get_context_data(self, **kwargs):
         context = super(VerTurmaView, self).get_context_data(**kwargs)
         turma = Turma.objects.get(codigo=self.kwargs['codigo'])
+=======
+
+    def dispatch(self, request, codigo):
+        if not testar_codigo(codigo):
+            return render(request, 'atividades/turma_inexistente.html', {})
+        return super(VerTurmaView, self).dispatch(request, codigo)
+
+
+    def get_context_data(self, **kwargs):
+        context = super(VerTurmaView, self).get_context_data(**kwargs)
+        a = Aluno_em_Turma.objects.get(turma=Turma.objects.get(codigo=self.kwargs['codigo']), id_usuario=self.request.user)
+        turma = a.turma
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
         print(self.kwargs['codigo'])
         context['turma'] = turma
         return context
@@ -132,24 +163,45 @@ class CriarAtividadeView(LoginRequiredMixin, FormView):
         disciplina = request.POST['disciplina']
         nome = request.POST['nome']
         data = request.POST['entrega']
+<<<<<<< HEAD
         entrega = datetime.strptime(data, "%d/%m/%y").date()
+=======
+        entrega = datetime.strptime(data, "%d/%m/%Y").date()
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
         nota = request.POST['nota']
         obs = request.POST['obs']
         turma = Turma.objects.get(codigo=codigo_turma)
         user = request.user
         a = Atividade.objects.create(disciplina=disciplina, nome=nome, entrega=entrega, nota=nota, obs=obs, turma=turma, criador=user)
+<<<<<<< HEAD
         return redirect('atividades', codigo_turma=turma.codigo, ak=a.id)
 
 class VerAtividadesView(ListView):
     template_name = 'atividades/atividades.html'
     queryset = Atividade.objects.all()
+=======
+        return redirect('ver-atividade', codigo_turma=turma.codigo, ak=a.id)
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
 
 class VerAtividadeView(LoginRequiredMixin, TemplateView):
     template_name = 'atividades/atividade.html'
 
+<<<<<<< HEAD
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['atividade'] = Atividade.objects.get(id=self.kwargs['ak'])
+=======
+    def dispatch(self, request, codigo_turma, ak):
+        try:
+            Atividade.objects.get(id=ak)
+            return super(VerAtividadeView, self).dispatch(request, codigo_turma, ak)
+        except:
+            return render(request, 'atividades/atividade_inexistente.html', {'turma':Turma.objects.get(codigo=codigo_turma)})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['atividade'] = Atividade.objects.get(turma=Turma.objects.get(codigo=self.kwargs['codigo_turma'], id=self.kwargs['ak']))
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
         return context
 
 def testar_codigo(codigo):

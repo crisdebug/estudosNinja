@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from __future__ import absolute_import
 from django.shortcuts import render, redirect
 from django import http
@@ -129,3 +130,8 @@ def post_comment(request, next=None, using=None):
     )
 
     return redirect('ver-atividade', codigo_turma=target.turma.id, ak=target.id)
+=======
+from django.shortcuts import render
+
+# Create your views here.
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209

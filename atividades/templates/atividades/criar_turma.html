@@ -3,6 +3,7 @@
 {% load widget_tweaks %}
 {% load staticfiles %}
 
+<<<<<<< HEAD
 {% block img %}<link rel="shortcut icon" href="{% static 'imagens/logo.png' %}" type="image/png"> {% endblock %}
 {% block title %}<title>Criar Turma</title>{% endblock %}
 
@@ -34,4 +35,32 @@
         </div>
     </div>
 
+=======
+{% block img %}<link rel="shortcut icon" href="{% static 'imgens/logo.png' %}" type="image/png"> {% endblock %}
+{% block title %}<title>Criar Turma</title>{% endblock %}
+
+{% block conteudo %}
+<body>
+    <div class="bg-contact2" style= "background-image: url('/static/imagens/bg-07.png')">
+        <div class="container-contact2">                 
+            <main class="jumbotron jumbotron" id="container_turmas">    
+                <form class="jumbotron jumbotron" id="fundo_turmas" method="POST">
+                    {% csrf_token %}
+                    <h3 style="margin-top: -20px;">Criar turma</h3>
+                    <hr class="my-4">
+                    <div  class="criar_turma">
+                        <div id="nome_turma"><h3 class="nome_turma" class="h3"> Nome da Turma</h3><br>
+
+                        <div id="input_turma">
+                        {{ form.nome }}
+                        <br>
+                        <input id="enviar_turma" type="submit" value="Criar" class="btn btn-primary btn-lg" role="button">
+                    </div>
+                    </div>  
+                </form>
+            </main>
+        </div>
+    </div>
+</body>
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
 {% endblock %}

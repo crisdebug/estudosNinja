@@ -3,7 +3,11 @@
 {% load static %}
 {% load widget_tweaks %}
 
+<<<<<<< HEAD
 {% block title %} <title>Criar Atividade</title> {% endblock %}
+=======
+{% block title %} <title>Adicionar Membro</title> {% endblock %}
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
 
 {% block conteudo %}
                  
@@ -18,6 +22,7 @@
     
                     <input type="text" placeholder="Nome do aluno" size="10" required>-->
                     <div class="divs"><label class="label1" for="Nome"><h5>Nome da Disciplina:</h5></label>
+<<<<<<< HEAD
                     {% render_field form.disciplina placeholder+='Nome da Disciplina' type+='text' size+='25' %}</div>
 
                     <div class="divs"><label class="label2" for="Nome"><h5>Nome da atividade:</h5></label>
@@ -34,6 +39,24 @@
                     
                     <div class="divs1"><input class="btn btn-primary btn-lg" id="cancelar_atividade" type="reset" value="Cancelar"  role="button">
                     <input class="btn btn-primary btn-lg" id="enviar_atividade" type="submit" value="Criar"  role="button">
+=======
+                    {{ form.disciplina }}</div>
+
+                    <div class="divs"><label class="label1" for="Nome"><h5>Nome da atividade:</h5></label>
+                    {{ form.nome }}</div>
+    
+                    <div class="divs"><label class="label2" for="data"><h5>Data de entrega:</h5></label>
+                    {{  form.entrega }}</div>
+    
+                    <div class="divs"><label class="label3" for="valor"><h5>Valor da atividade:</h5></label>
+                    {{ form.nota }}</div>
+    
+                    <div class="divs"><label class="label_observacoes" for="observacoes"><h5>Observações:</h5></label>
+                    {{ form.obs }}</div>
+                    
+                    <div class="divs1"><input id="cancelar_atividade" type="reset" value="Cancelar" class="btn btn-primary btn-lg" role="button">
+                    <input id="enviar_atividade" type="submit" value="Criar" class="btn btn-primary btn-lg" role="button">
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
                     </div>
                 </form>
             </div>

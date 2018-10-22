@@ -8,7 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/testes.css' %}">
         <link rel="stylesheet" href="{% static 'bootstrap-4.1.1-dist/css/bootstrap.css' %}">
+<<<<<<< HEAD
         <link rel="shortcut icon" href="{% static 'imagens/ninja.png' %}" type="image/png">
+=======
+        <script src="{% static 'bootstrap-4.1.1-dist/js/jquery.min.js' %}"></script>
+        <script src="{% static 'bootstrap-4.1.1-dist/js/bootstrap.min.js' %}"></script>
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
     </head>
 
     <body style="width: 100%;">
@@ -17,9 +22,15 @@
                 <header>
                     <h1 style="color: white;">O Estudos.Ninja é uma plataforma web pensada para você se organizar nos seus estudos.</h1>
                 </header>
+<<<<<<< HEAD
                 {% if messages %}
             {% for message in messages %}
                 <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+=======
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger" role="alert">
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -73,6 +84,10 @@
          <footer>
             <div class="jumbotron jumbotron">&copy; Copyright<strong> Estudos.Ninja 2018.</strong> Todos os direitos reservados à <a href="https://mambee-ifpi.firebaseapp.com/" target="_blank"> Mambee - Fábrica e Escola de Software.</a></div>
         </footer>
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
     </body>
 </html>

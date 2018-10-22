@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'atividades/_layouts/layout.html' %}
 
 {% load static %}
@@ -59,3 +60,29 @@
     </div>
   </div>
 {% endblock %}
+=======
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ turma.nome }}</title>
+  </head>
+  <body>
+    <h3>
+      Nome: {{ turma.nome }}<br>
+      Codigo: {{ turma.codigo }}<br>
+      Adicione alguém compartilhando este link: <a href="{{ request.scheme }}://{{ request.META.HTTP_HOST }}/e/{{ turma.codigo }}">{{ request.scheme }}://{{ request.META.HTTP_HOST }}/e/{{ turma.codigo }}</a>
+    </h3>
+    {% if object_list|length > 0 %}
+      {% for atividade in object_list %}
+        <h3><a href="/v/{{ turma.codigo }}/a/{{ atividade.id }}">{{ atividade.nome }}</a> </h3>
+      {% endfor %}
+    {% else %}
+      <h3>Não há nenhuma atividade nesta turma. <a href="/v/{{ turma.codigo }}/criar">Criar Nova</a></h3>
+    {% endif %}
+
+    <h3><a href="/turmas">Voltar</a>  </h3>
+    <h3><a href="/v/{{ turma.codigo }}/criar">Criar Atividade</a>  </h3>
+  </body>
+</html>
+>>>>>>> 5c5504ede013a241303215239b275d7941ccb209
