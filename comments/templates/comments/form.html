@@ -1,0 +1,25 @@
+{% extends 'atividades/_layouts/layout.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+{% load comments i18n %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    {% get_comment_form for object as form %}
+    <form action="{% comment_form_target %}" method="POST">
+        {% csrf_token %}
+        {% render_field form.comment placeholder+='Comentario...' type+='text' size+='25' cols='10' rows='1' %}
+        {{ form.honeypot }}
+        {{ form.content_type }}
+        {{ form.object_pk }}
+        {{ form.timestamp }}
+        {{ form.security_hash }}
+        <input type="submit" value="Comentar" id="id_submit" />
+        </form>
+      
+    {% else %}
+    <p>Please <a href="{% url 'auth_login' %}">log in</a> to leave a comment.</p>
+    {% endif %}
+{% endblock %}
+

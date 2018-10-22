@@ -1,0 +1,31 @@
+{% extends 'atividades/_layouts/layout.html' %}
+{% load comments %}
+{% load widget_tweaks %}
+{% block conteudo %}
+  <title>{{ atividade.nome }}</title>
+ 
+  <body>
+    <h3>{{ atividade.nome }}</h3>
+    <h6>{{ atividade.entrega }}</h6>
+    <h6>{{ atividade.nota }}</h6>
+    <h6>{{ atividade.obs }}</h6>
+    <br>
+    <br>
+    {% render_comment_list for atividade %}
+
+    {% get_comment_form for atividade as form %}
+    <form action="{% comment_form_target %}" method="POST">
+    {% csrf_token %}
+    {% render_field form.comment placeholder+='Comentario...' type+='text' size+='25' rows='1' %}
+    {{ form.honeypot }}
+    {{ form.content_type }}
+    {{ form.object_pk }}
+    {{ form.timestamp }}
+    {{ form.security_hash }}
+    <input type="submit" value="Comentar" id="id_submit" />
+    </form>
+  
+
+  </div>
+</form>
+{% endblock %}
